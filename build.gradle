@@ -27,3 +27,12 @@ javafx {
 run {
     mainClassName = "pl.edu.wat.kowalski.javafx.Main"
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'pl.edu.wat.kowalski.javafx.Launcher'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
